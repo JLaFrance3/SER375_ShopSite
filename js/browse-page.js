@@ -7,8 +7,18 @@ async function loadItems() {
     const response = await fetch('http://67.205.143.29:3000/products');
     const products = await response.json();
 
-    let productCounter = 0;
+    //Sort products by name alphabetically
+    products.sort((a, b) => {
+        if (a.name.toUpperCase() < b.name.toUpperCase()) {
+            return -1;
+        }
+        if (a.name.toUpperCase() > b.name.toUpperCase()) {
+            return 1;
+        }
+        return 0;
+    });
 
+    let productCounter = 0;
     products.forEach((product, index) => {
         productCounter++;
 
@@ -20,22 +30,22 @@ async function loadItems() {
             }
             else {
                 if (i >= Math.ceil(product.ratingAverage)) {
-                    stars += createStar(index * 10 + i, 0)
+                    stars += createStar(index * 10 + i, 0);
                 }
                 else {
-                    stars += createStar(index * 10 + i, (product.ratingAverage % 1) * 100)
+                    stars += createStar(index * 10 + i, (product.ratingAverage % 1) * 100);
                 }
             }
         }
 
         //Calculate price after discount. Set to 0 if discounted price less than 0.
-        const price = (product.price - product.discount) > 0 ? (product.price - product.discount) : 0
+        const price = (product.price - product.discount) > 0 ? (product.price - product.discount) : 0;
 
         //Create product card
         productGrid.innerHTML += `
-            <div class="product-card">
+            <a class="product-card" href="product.html?id=/${product.id}">
                 <div class="product-image-container">
-                    <img src="${product.images[0]}" alt="Picture of ${product.description}">
+                    <img src="${product.images[0]}" alt="Picture of ${product.description}" draggable="false">
                 </div>
                 <div class="product-details">
                     <h4>${product.name}</h4>
@@ -49,7 +59,7 @@ async function loadItems() {
                         })}
                     </p>
                 </div>
-            </div>
+            </a>
         `;
     });
 

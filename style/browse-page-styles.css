@@ -4,10 +4,9 @@ body {
 }
 
 .logo {
-    background-color: 0F1111;
+    background-color: #0F1111;
     width: 72px;
     align-self: center;
-    background-color: 0F1111;
     padding: 4px 100%;
 }
 
@@ -47,6 +46,8 @@ body {
     height: 240px;
     justify-content: start;
     box-sizing: border-box;
+    text-decoration: none;
+    color: black;
 }
 
 .product-image-container {
