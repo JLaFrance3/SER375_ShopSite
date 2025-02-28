@@ -38,8 +38,8 @@ async function loadItems() {
             }
         }
 
-        //Calculate price after discount. Set to 0 if discounted price less than 0.
-        const price = (product.price - product.discount) > 0 ? (product.price - product.discount) : 0;
+        //Calculate price after percentage discount. If no discount
+        const price = product.price - product.price * (product.discount / 100)
 
         //Create product card
         productGrid.innerHTML += `
