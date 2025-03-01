@@ -30,7 +30,7 @@ body {
     font-size: 8px;
 }
 
-#product-grid {
+.product-grid {
     display: grid;
     gap: 8px;
     grid-template-columns: repeat(auto-fill, 148px);
@@ -96,6 +96,15 @@ body {
 .product-details p {
     font-size: 8px;
     margin: 0px;
+}
+
+.product-details a {
+    text-decoration: none;
+    color: black;
+}
+
+.product-details a:hover {
+    color: #FF9900;
 }
 
 .star-rating {

@@ -3,7 +3,7 @@ const selectedImage = document.getElementById('selected-image');
 const productDetails = document.getElementById('product-details');
 
 async function initializeProductPage(id) {
-    const response = await fetch(`http://67.205.143.29:3000/products${id}`);
+    const response = await fetch(`http://67.205.143.29:3000/products/${id}`);
     if (response.status === 404) {
         window.location.href = 'index.html';
         return;
@@ -26,7 +26,7 @@ async function initializeProductPage(id) {
                 selection.classList.remove('selected')
                 selection.classList.add('unselected')
             });
-            //Set event thumbnail as 'selected
+            //Set event thumbnail as 'selected'
             thumbnail.classList.add('selected')
             thumbnail.classList.remove('unselected')
             selectedImage.src = thumbnail.src;
@@ -105,7 +105,7 @@ async function initializeProductPage(id) {
 const queryStringParams = new URLSearchParams(window.location.search);
 const id = queryStringParams.get('id');
 console.log(id)
-if (id !== null && id.length > 1) {
+if (id !== null) {
     initializeProductPage(id);
 }
 else {

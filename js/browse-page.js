@@ -43,12 +43,16 @@ async function loadItems() {
 
         //Create product card
         productGrid.innerHTML += `
-            <a class="product-card" href="product.html?id=/${product.id}">
+            <div class="product-card">
                 <div class="product-image-container">
-                    <img src="${product.images[0]}" alt="Picture of ${product.description}" draggable="false">
+                    <a href="product.html?id=${product.id}">
+                        <img src="${product.images[0]}" alt="Picture of ${product.description}" draggable="false">
+                    </a>
                 </div>
                 <div class="product-details">
-                    <h4>${product.name}</h4>
+                    <a href="product.html?id=${product.id}">
+                        <h4>${product.name}</h4>
+                    </a>
                     <div class="star-rating">
                         ${stars}
                     </div>
@@ -59,7 +63,7 @@ async function loadItems() {
                         })}
                     </p>
                 </div>
-            </a>
+            </div>
         `;
     });
 
